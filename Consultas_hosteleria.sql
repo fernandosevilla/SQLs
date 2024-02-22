@@ -26,4 +26,5 @@ SELECT * FROM camareros_comida
 WHERE Id_camarero
 NOT IN (SELECT Id_camarero FROM camareros_cena);
 
--- 4 
+-- 4 Listar los camareros con su id, nombre y apellidos que han atendido mas mesas que todos los camareros
+-- que trabajan en el "Restaurante B"
