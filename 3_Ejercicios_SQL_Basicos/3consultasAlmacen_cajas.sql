@@ -55,10 +55,16 @@ INSERT INTO cajas (numReferencia, contenido, valor, codigoAlmacen) VALUES
 ('HTY7P', 'Metal', 400, 3);
 
 -- 13 Rebajar el valor de todas las cajas un 15%
-SELECT 
+UPDATE Cajas SET Valor = Valor * 0.85; 
 
 -- 14 Rebajar un 20% el valor de todas las cajas cuyo valor sea 
 -- superior al valor medio de todas las cajas
+UPDATE Cajas SET Valor = Valor * 0.8 
+WHERE Valor > (SELECT AVG_Valor
+              FROM (SELECT AVG(Valor)
+              AS AVG_Valor
+              FROM Cajas)
+              AS ValorMedio);
 
 
 -- 15  Eliminar todas las cajas cuyo valor sea inferior a 100€
@@ -66,3 +72,10 @@ DELETE FROM cajas
 WHERE valor < 100;
 
 -- 16 Vaciar el contenido de los almacenes que están saturados.
+DELETE FROM Cajas WHERE Almacen IN (
+SELECT Codigo FROM (SELECT Codigo, Capacidad,
+                   (SELECT COUNT(*) FROM Cajas
+                   WHERE Cajas.Almacen = Almacenes.Codigo)
+                   AS NumCajas
+                   FROM Almacenes) AS NumCajas
+                   WHERE NumCajas > Capacidad);
