@@ -71,3 +71,21 @@ FROM
 -- (12345679, 'Esther', 'García', 22);
 
 -- 15 Aplicar un recorte presupuestario del 10% a todos los departamentos
+UPDATE Departamentos SET Presupuesto = Presupuesto * 0.9;
+
+-- 16. Reasignar a los empleados del departamento de investigación (código 14) al
+-- departamento de naturaleza (código 9)
+UPDATE Empleados
+SET Departamento = 9
+WHERE Departamento = 14;
+
+-- 17. Despedir a todos los empleados que trabajan para el departamento de informática
+-- (código 14)
+DELETE FROM Empleados WHERE Departamento = 11;
+
+-- 18. Despedir a todos los empleados que trabajen para departamentos cuyo presupuesto
+-- sea superior a los 60.000€
+DELETE FROM Empleados WHERE Departamento IN (SELECT Presupuesto FROM Departamentos WHERE Presupuesto > 60000);
+
+-- 19. Despedir a todos los empleados.
+DELETE FROM Empleados;
