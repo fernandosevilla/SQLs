@@ -58,3 +58,21 @@ FROM remesas;
 -- suministrado piezas(sin duplicidad).
 SELECT DISTINCT codProv FROM pedidos
 WHERE numPed IN (SELECT numPed FROM remesas);
+
+-- 13 Obtener un listado con todos los datos de los proveedores que nos han suministrado piezas(sin duplicidad). 
+SELECT DISTINCT * FROM pedidos
+WHERE numPed IN (SELECT numPed FROM remesas);
+
+-- 14 Obtener un listado con el codigo, nombre de la pieza y cantidad de todas las piezas suministradas.
+SELECT p.codPieza, p.nomPieza, rem.ctd FROM piezas p, remesas rem
+WHERE p.codPieza = rem.codPieza;
+
+-- 15 Obtener un listado de pedidos con los siguientes datos: numero pedido, codigo pieza, nombre pieza, cantidad suministrada
+
+-- 16 Obtener todos los datos de los tornillos suministrados junto con la cantidad.
+SELECT p.codPieza, p.nomPieza, p.peso, p.color, p.existencias, p.precio, rem.ctd
+FROM piezas p, remesas rem
+WHERE p.codPieza = rem.codPieza
+AND p.nomPieza = "Tornillo";
+
+-- 17 
