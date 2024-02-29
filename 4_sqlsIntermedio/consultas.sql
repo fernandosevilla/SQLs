@@ -252,5 +252,4 @@ FROM piezas;
 
 -- 35 Obtener el importe total de todas las remesas realizadas hasta el momento
 
-
--- 36 
+-- 36
