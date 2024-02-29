@@ -234,4 +234,23 @@ SELECT COUNT(codPieza) AS Num_Piezas FROM piezas;
 SELECT COUNT(DISTINCT nomPieza) AS Num_Tipos_Piezas
 FROM piezas;
 
--- 32 
+-- 32A Obtener el número de poblaciones
+SELECT COUNT(poblacion) AS numero_poblaciones
+FROM proveedores;
+
+-- 32B Obtener el número de poblaciones distintas(¡¡ojo!! Idem a 31.BIS)
+SELECT DISTINCT COUNT(poblacion) AS numero_poblaciones
+FROM proveedores;
+
+-- 33 Obtener el número de pedidos realizados hasta el momento
+SELECT COUNT(*) AS numero_pedidos
+FROM pedidos;
+
+-- 34 Obtener el valor total del stock de piezas
+SELECT SUM(existencias * precio) AS Valor_Total_Piezas
+FROM piezas;
+
+-- 35 Obtener el importe total de todas las remesas realizadas hasta el momento
+
+
+-- 36 
